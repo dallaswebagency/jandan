@@ -8,310 +8,306 @@
 <meta name="theme-color" content="#0A2A5E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0A2A5E; --navy-2:#0F3878; --navy-ink:#071D43;
-  --azure:#0B74E5; --red:#D5161E; --red-dark:#AE0E15;
-  --flag:#E3E15C; --concrete:#EEF1F4; --paper:#FFFFFF;
-  --ink:#121A28; --muted:#566079; --line:#D5DBE4;
-  --display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",Impact,sans-serif;
-  --body:"Public Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --wrap:1240px; --merlon:34px;
+  --navy:#0A2A5E;--navy-2:#123A7D;--deep:#061B3F;
+  --azure:#1F7FEA;--red:#D9161F;--red-dark:#B20F17;--flag:#E6E35F;
+  --concrete:#EEF1F5;--ink:#0F1828;--muted:#5A6480;--line:#DCE1E9;
+  --f:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --wrap:1280px;--merlon:30px;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:var(--f);font-size:17px;line-height:1.6;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--flag);outline-offset:3px}
-.wrap{width:min(var(--wrap),100% - 40px);margin-inline:auto}
-h1,h2,h3{font-family:var(--display);font-weight:800;line-height:.95;letter-spacing:.005em;margin:0}
+.wrap{width:min(var(--wrap),100% - 48px);margin-inline:auto}
+h1,h2,h3{font-family:var(--f);font-stretch:118%;font-weight:800;line-height:.98;letter-spacing:-.02em;margin:0}
 p{margin:0 0 1em}
-.btn{display:inline-flex;align-items:center;gap:10px;font:700 16px/1 var(--body);text-decoration:none;padding:17px 26px;border:2px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 16px/1 var(--f);text-decoration:none;padding:18px 28px;border:2px solid transparent;cursor:pointer;border-radius:999px;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn svg{width:18px;height:18px;flex:none}
 .btn-red{background:var(--red);color:#fff}
 .btn-red:hover{background:var(--red-dark)}
-.btn-line{border-color:rgba(255,255,255,.55);color:#fff}
-.btn-line:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-ghost{border-color:rgba(255,255,255,.5);color:#fff;backdrop-filter:blur(6px);background:rgba(255,255,255,.06)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.14)}
 .btn-navy{background:var(--navy);color:#fff}
 .btn-navy:hover{background:var(--navy-2)}
-.btn svg{width:18px;height:18px;flex:none}
+.btn-line{border-color:var(--navy);color:var(--navy)}
+.btn-line:hover{background:var(--navy);color:#fff}
 
-/* Battlement edge, taken from the towers in the Jan-Dan crest */
+/* Battlement edge, from the towers in the Jan-Dan crest */
 .battlement{position:relative}
-.battlement::before{content:"";position:absolute;left:0;right:0;top:calc(var(--merlon) * -0.62);height:calc(var(--merlon) * .62);
+.battlement::before{content:"";position:absolute;left:0;right:0;top:calc(var(--merlon) * -.6);height:calc(var(--merlon) * .6);z-index:3;
   background:repeating-linear-gradient(90deg,var(--edge) 0 var(--merlon),transparent var(--merlon) calc(var(--merlon) * 2));pointer-events:none}
 
-/* Utility bar */
-.util{background:var(--navy-ink);color:#C9D4EA;font-size:14px}
-.util .wrap{display:flex;gap:28px;align-items:center;justify-content:space-between;padding:9px 0;flex-wrap:wrap}
-.util-left{display:flex;gap:26px;flex-wrap:wrap}
-.util a{text-decoration:none;color:#fff}
-.util a:hover{color:var(--flag)}
-.util span b{color:#fff;font-weight:600}
-
 /* Header */
-.site-head{background:#fff;position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line)}
-.site-head .wrap{display:flex;align-items:center;gap:28px;min-height:88px}
-.brand img{height:62px;width:auto}
-.nav{display:flex;gap:4px;margin-left:auto;align-items:center}
+.site-head{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .25s,box-shadow .25s}
+.site-head .wrap{display:flex;align-items:center;gap:26px;min-height:92px;transition:min-height .25s}
+.brand{position:relative;display:block;width:200px}
+.brand img{width:200px;transition:opacity .25s}
+.brand .dark{position:absolute;inset:0;opacity:0}
+.nav{display:flex;gap:2px;margin:0 0 0 auto;padding:0;align-items:center}
 .nav>li{list-style:none;position:relative}
-.nav{padding:0;margin-top:0;margin-bottom:0}
-.nav>li>a,.nav>li>button{font:600 16px/1 var(--body);color:var(--ink);text-decoration:none;padding:14px 14px;display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer}
-.nav>li>a:hover,.nav>li>button:hover,.nav>li:focus-within>button{color:var(--red)}
-.nav>li>a[aria-current]{color:var(--red)}
+.nav>li>a,.nav>li>button{font:600 15.5px/1 var(--f);color:#fff;text-decoration:none;padding:12px 14px;display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;border-radius:999px}
+.nav>li>a:hover,.nav>li>button:hover,.nav>li:focus-within>button{background:rgba(255,255,255,.12)}
 .nav .caret{width:10px;height:10px}
-.drop{position:absolute;top:100%;left:0;min-width:250px;background:#fff;border-top:3px solid var(--red);box-shadow:0 18px 40px -18px rgba(10,42,94,.45);padding:10px 0;margin:0;list-style:none;opacity:0;visibility:hidden;transform:translateY(6px);transition:.18s}
+.drop{position:absolute;top:calc(100% + 8px);left:0;min-width:260px;background:#fff;border-radius:14px;box-shadow:0 24px 50px -20px rgba(6,27,63,.45);padding:10px;margin:0;list-style:none;opacity:0;visibility:hidden;transform:translateY(6px);transition:.18s}
+.drop::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
 .nav>li:hover .drop,.nav>li:focus-within .drop{opacity:1;visibility:visible;transform:none}
-.drop a{display:block;padding:10px 20px;text-decoration:none;font-size:15px}
+.drop a{display:block;padding:10px 14px;text-decoration:none;font-size:15px;color:var(--ink);border-radius:8px}
 .drop a:hover{background:var(--concrete);color:var(--red)}
-.head-call{display:flex;flex-direction:column;text-decoration:none;line-height:1.15;padding-left:22px;border-left:1px solid var(--line)}
-.head-call small{font-size:13px;color:var(--muted)}
-.head-call strong{font-family:var(--display);font-size:26px;font-weight:800;color:var(--navy)}
-.menu-btn{display:none;margin-left:auto;background:var(--navy);color:#fff;border:0;width:48px;height:48px;cursor:pointer}
+.head-cta{display:flex;align-items:center;gap:10px}
+.head-tel{font-weight:700;color:#fff;text-decoration:none;font-size:16px;padding:0 6px}
+.head-cta .btn{padding:14px 22px;font-size:15px}
+.menu-btn{display:none;margin-left:auto;background:var(--red);color:#fff;border:0;width:48px;height:48px;border-radius:50%;cursor:pointer}
 .menu-btn svg{width:22px;height:22px;margin:auto}
+.site-head.solid{background:#fff;box-shadow:0 10px 30px -18px rgba(6,27,63,.35)}
+.site-head.solid .wrap{min-height:76px}
+.site-head.solid .brand .light{opacity:0}
+.site-head.solid .brand .dark{opacity:1}
+.site-head.solid .nav>li>a,.site-head.solid .nav>li>button,.site-head.solid .head-tel{color:var(--ink)}
+.site-head.solid .nav>li>a:hover,.site-head.solid .nav>li>button:hover{background:var(--concrete)}
 
 /* Hero */
-.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:72px 0 84px}
+.hero{position:relative;min-height:max(760px,100svh);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--deep)}
+.hero-bg{position:absolute;top:0;bottom:0;right:0;left:auto;width:64%;height:100%;object-fit:cover;object-position:42% 50%;transform:scale(1.04);animation:settle 1.6s cubic-bezier(.2,.7,.2,1) forwards}
 .hero::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/48px 48px,
-  linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/48px 48px;pointer-events:none}
-.hero .wrap{position:relative;z-index:1}
-.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:end}
-.hero-kicker{display:inline-flex;align-items:center;gap:12px;font-weight:600;color:#C9D4EA;margin-bottom:26px}
-.hero-kicker i{display:inline-block;width:28px;height:4px;background:var(--flag)}
-.hero h1{font-size:clamp(58px,8.4vw,124px);font-weight:900;text-transform:uppercase;line-height:.86;margin-bottom:28px}
-.hero h1 span{display:block}
-.hero-lede{font-size:20px;max-width:34ch;color:#DCE4F3;margin-bottom:34px}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+  linear-gradient(90deg,var(--deep) 0%,var(--deep) 36%,rgba(6,27,63,.75) 44%,rgba(6,27,63,.15) 62%,rgba(6,27,63,0) 100%),
+  linear-gradient(0deg,rgba(6,27,63,.7) 0%,rgba(6,27,63,0) 30%)}
+.hero .wrap{position:relative;z-index:2;padding:160px 0 170px}
+.hero-copy{max-width:760px}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-size:14.5px;font-weight:600;margin-bottom:28px;backdrop-filter:blur(8px)}
+.hero-tag b{background:var(--flag);color:var(--deep);padding:4px 10px;border-radius:999px;font-size:13px}
+.hero h1{font-size:clamp(46px,6.3vw,98px);font-stretch:122%;font-weight:900;margin-bottom:26px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln>span{display:block;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.1s}
+.hero h1 .ln:nth-child(3)>span{animation-delay:.2s;color:var(--flag)}
+.hero-lede{font-size:19px;max-width:40ch;color:#DDE5F4;margin-bottom:34px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+@keyframes rise{to{transform:none}}
+@keyframes settle{to{transform:scale(1)}}
 
-/* Title block: the info box from a construction drawing */
-.titleblock{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid rgba(227,225,92,.7);font-size:14px}
-.titleblock div{padding:14px 16px 16px;border-right:1.5px solid rgba(227,225,92,.7)}
-.titleblock div:last-child{border-right:0}
-.titleblock small{display:block;color:var(--flag);font-size:12.5px;font-weight:600;margin-bottom:4px}
-.titleblock b{font-family:var(--display);font-size:24px;font-weight:700;line-height:1.05;display:block}
-
-.hero-photo{position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end}
-.hero-photo figure{margin:0;position:relative;border:10px solid #fff;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
-.hero-photo img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.hero-photo figcaption{position:absolute;left:-10px;bottom:-10px;background:var(--red);color:#fff;padding:12px 18px;font-weight:600;font-size:15px}
-
-/* Estimate bar */
-.estimate{background:#fff;color:var(--ink);margin-top:64px;padding:30px 32px 32px;box-shadow:0 20px 50px -24px rgba(7,29,67,.55);position:relative;z-index:2;border-top:6px solid var(--red)}
-.estimate-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:18px}
-.estimate-head h2{font-size:38px;color:var(--navy)}
-.estimate-head p{margin:0;color:var(--muted);font-size:15px}
-.estimate form{display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr auto;gap:12px}
+/* Estimate card in hero */
+.dock{--edge:var(--concrete);background:var(--concrete);padding:0 0 10px}
+.estimate{position:relative;z-index:4;margin-top:-120px;background:#fff;color:var(--ink);border-radius:24px;padding:30px 32px 24px;box-shadow:0 40px 80px -36px rgba(6,27,63,.55);display:grid;grid-template-columns:.8fr 2.2fr;gap:36px;align-items:center}
+.estimate h2{font-size:30px;font-stretch:112%;color:var(--navy);margin-bottom:6px}
+.estimate .sub{font-size:14.5px;color:var(--muted);margin-bottom:18px}
+.estimate .sub{margin:0}
+.estimate form{display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr;gap:12px}
+.field{grid-column:span 1}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px}
-.field input,.field select{width:100%;font:500 16px/1.2 var(--body);padding:14px 14px;border:1.5px solid var(--line);background:var(--concrete);color:var(--ink);border-radius:0;appearance:none}
-.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230A2A5E' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px;padding-right:38px}
+.field input,.field select{width:100%;font:500 16px/1.2 var(--f);padding:14px 16px;border:1.5px solid var(--line);background:var(--concrete);color:var(--ink);border-radius:12px;appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230A2A5E' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:12px;padding-right:40px}
 .field input:focus,.field select:focus{outline:none;border-color:var(--azure);background:#fff}
-.estimate .btn{align-self:end;height:51px;justify-content:center}
-.form-note{grid-column:1/-1;font-size:14px;color:var(--navy);margin:4px 0 0;min-height:1.4em}
+.estimate .btn{grid-column:span 4;margin-top:4px}
+.form-note{grid-column:span 4;font-size:13.5px;color:var(--navy);margin:0;min-height:1.3em}
+
+.facts{display:flex;gap:0;margin-top:44px;border-top:1px solid rgba(255,255,255,.18);padding-top:22px}
+.facts div{padding:0 26px;border-left:1px solid rgba(255,255,255,.18)}
+.facts div:first-child{padding-left:0;border-left:0}
+.facts small{display:block;font-size:13px;color:var(--flag);font-weight:600;margin-bottom:2px}
+.facts b{font-stretch:112%;font-size:18px;font-weight:700;line-height:1.25;display:block}
 
 /* Clients */
-.clients{--edge:var(--concrete);background:var(--concrete);padding:56px 0 60px}
-.clients .wrap{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:center}
-.clients p{margin:0;font-weight:600;color:var(--navy);font-size:18px;line-height:1.35}
-.client-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.client{display:flex;align-items:center;gap:12px;background:#fff;padding:14px 16px;border-left:4px solid var(--azure)}
-.client img{width:52px;height:52px;border-radius:50%;flex:none}
-.client span{font-size:14.5px;font-weight:600;line-height:1.25}
+.clients{background:var(--concrete);padding:46px 0 54px}
+.clients .wrap{display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:space-between}
+.clients p{margin:0;font-weight:700;color:var(--navy);font-size:17px;max-width:20ch;line-height:1.3}
+.client-row{display:flex;gap:44px;flex-wrap:wrap;align-items:center}
+.client{display:flex;align-items:center;gap:12px;font-weight:600;font-size:15px;color:#3A4560}
+.client img{width:54px;height:54px;border-radius:50%}
 
-/* Services directory */
-.services{padding:110px 0 120px}
-.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:56px}
-.sec-head h2{font-size:clamp(44px,5.6vw,76px);color:var(--navy);text-transform:uppercase}
-.sec-head p{color:var(--muted);margin:0;max-width:52ch}
-.directory{border-top:3px solid var(--navy)}
-.dir-row{display:grid;grid-template-columns:240px 1fr 1.25fr auto;gap:40px;align-items:center;padding:30px 0;border-bottom:1.5px solid var(--line);text-decoration:none;color:inherit;position:relative}
-.dir-row img{width:240px;aspect-ratio:4/3;object-fit:cover;filter:saturate(.9)}
-.dir-row h3{font-size:44px;color:var(--navy);text-transform:uppercase;transition:color .2s}
-.dir-row ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.dir-row li{font-size:15px;font-weight:500;padding:7px 12px;background:var(--concrete);color:var(--ink)}
-.dir-go{width:60px;height:60px;border:2px solid var(--navy);display:grid;place-items:center;transition:.2s}
-.dir-go svg{width:22px;height:22px;color:var(--navy)}
-.dir-row:hover h3{color:var(--red)}
-.dir-row:hover .dir-go{background:var(--red);border-color:var(--red)}
-.dir-row:hover .dir-go svg{color:#fff}
-.services-foot{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:40px;flex-wrap:wrap}
-.services-foot p{margin:0;font-size:18px}
-.services-foot a.tel{font-family:var(--display);font-size:30px;font-weight:800;color:var(--red);text-decoration:none}
+/* Section heads */
+.sec-head{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end;margin-bottom:52px}
+.sec-head h2{font-size:clamp(40px,5vw,72px);color:var(--navy)}
+.sec-head p{color:var(--muted);margin:0 0 18px;max-width:50ch;font-size:18px}
+
+/* Services */
+.services{padding:90px 0 120px}
+.svc-grid{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:330px 330px 300px;gap:18px}
+.svc{position:relative;overflow:hidden;border-radius:24px;color:#fff;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;padding:30px;isolation:isolate}
+.svc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.svc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(6,27,63,.94) 0%,rgba(6,27,63,.55) 42%,rgba(6,27,63,0) 75%)}
+.svc:hover img{transform:scale(1.05)}
+.svc.big{grid-row:span 2;padding:40px}
+.svc.wide{grid-column:span 2;flex-direction:row;align-items:flex-end;justify-content:space-between;gap:30px}
+.svc.wide::after{background:linear-gradient(90deg,rgba(6,27,63,.95) 0%,rgba(6,27,63,.7) 45%,rgba(6,27,63,.1) 85%)}
+.svc h3{font-size:clamp(28px,2.8vw,40px);margin-bottom:16px}
+.svc.big h3{font-size:clamp(36px,3.8vw,56px)}
+.svc ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.svc li{font-size:14px;font-weight:600;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+.svc .go{position:absolute;top:24px;right:24px;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;transition:background .2s,color .2s,transform .2s}
+.svc .go svg{width:20px;height:20px}
+.svc:hover .go{background:var(--red);color:#fff;transform:rotate(-45deg)}
+.svc-foot{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:30px;flex-wrap:wrap}
+.svc-foot p{margin:0;font-size:18px;color:var(--muted)}
+.svc-foot p a{color:var(--navy);font-weight:700}
 
 /* About */
 .about{background:var(--concrete);padding:120px 0}
-.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px;align-items:center}
 .about-photo{position:relative}
-.about-photo img{width:100%;aspect-ratio:3/4;object-fit:cover}
-.since{position:absolute;right:-34px;bottom:44px;background:var(--navy);color:#fff;padding:22px 26px 20px;text-align:left}
-.since small{display:block;color:var(--flag);font-weight:600;font-size:14px}
-.since b{font-family:var(--display);font-size:72px;font-weight:900;line-height:.9;display:block}
-.since span{font-size:14px;color:#C9D4EA}
-.about h2{font-size:clamp(42px,4.8vw,66px);color:var(--navy);margin-bottom:26px}
-.about .lead{font-size:20px;font-weight:600;color:var(--ink);line-height:1.45}
-.about p{color:#3A4458}
-.founder{margin:34px 0 34px;padding:26px 0 0;border-top:2px solid var(--navy);display:grid;grid-template-columns:auto 1fr;gap:22px}
-.founder svg{width:46px;height:46px;color:var(--red)}
-.founder blockquote{margin:0;font-family:var(--display);font-size:30px;font-weight:700;line-height:1.1;color:var(--navy)}
-.founder cite{display:block;margin-top:12px;font:600 15px/1.3 var(--body);font-style:normal;color:var(--muted)}
+.about-photo img{width:100%;aspect-ratio:896/1056;object-fit:cover;border-radius:28px}
+.since{position:absolute;right:-40px;bottom:50px;background:var(--red);color:#fff;padding:22px 28px;border-radius:20px;box-shadow:0 24px 40px -20px rgba(178,15,23,.7)}
+.since small{display:block;font-weight:600;font-size:14px;opacity:.9}
+.since b{font-stretch:125%;font-size:66px;font-weight:900;line-height:.95;display:block;letter-spacing:-.03em}
+.since span{font-size:14px}
+.crest-tag{position:absolute;left:24px;top:24px;background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 14px 30px -18px rgba(6,27,63,.5)}
+.crest-tag img{width:150px;border-radius:0;aspect-ratio:auto}
+.about h2{font-size:clamp(38px,4.4vw,60px);color:var(--navy);margin-bottom:26px}
+.about .lead{font-size:21px;font-weight:600;line-height:1.45}
+.about p{color:#3A4560}
+.founder{margin:32px 0;padding:28px 30px;background:#fff;border-radius:20px;border-left:6px solid var(--red)}
+.founder blockquote{margin:0;font-stretch:110%;font-size:25px;font-weight:700;line-height:1.25;color:var(--navy)}
+.founder cite{display:block;margin-top:12px;font-weight:600;font-size:15px;font-style:normal;color:var(--muted)}
+.about-ctas{display:flex;gap:12px;flex-wrap:wrap}
 
-/* Job site photos */
-.work{--edge:var(--navy);background:var(--navy);color:#fff;padding:110px 0 120px}
+/* Work */
+.work{--edge:var(--deep);background:var(--deep);color:#fff;padding:110px 0 120px}
 .work .sec-head h2{color:#fff}
-.work .sec-head p{color:#C9D4EA}
-.work-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px}
-.panel-label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:16px}
-.panel-label h3{font-size:32px}
-.panel-label span{font-size:14px;color:#C9D4EA}
-.compare{position:relative;overflow:hidden;aspect-ratio:1000/540;background:#000;user-select:none;--pos:50%}
+.work .sec-head p{color:#C3CEE5}
+.work-grid{display:grid;grid-template-columns:1fr;gap:24px}
+.panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:22px}
+.panel-label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:16px}
+.panel-label h3{font-size:26px;font-stretch:112%}
+.panel-label span{font-size:14px;color:#C3CEE5}
+.compare{position:relative;overflow:hidden;aspect-ratio:1000/290;border-radius:14px;user-select:none;--pos:50%}
 .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .compare .before{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
 .compare .bar{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:#fff;transform:translateX(-50%);pointer-events:none}
-.compare .knob{position:absolute;top:50%;left:var(--pos);transform:translate(-50%,-50%);width:54px;height:54px;background:var(--red);border:3px solid #fff;display:grid;place-items:center;pointer-events:none}
-.compare .knob svg{width:24px;height:24px;color:#fff}
+.compare .knob{position:absolute;top:50%;left:var(--pos);transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:var(--red);border:3px solid #fff;display:grid;place-items:center;pointer-events:none}
+.compare .knob svg{width:22px;height:22px;color:#fff}
 .compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-.compare .tag{position:absolute;top:14px;padding:6px 12px;font-size:13px;font-weight:700;background:rgba(7,29,67,.85);pointer-events:none}
+.compare .tag{position:absolute;top:14px;padding:6px 14px;font-size:13px;font-weight:700;border-radius:999px;background:rgba(6,27,63,.85);pointer-events:none}
 .compare .tag.l{left:14px}.compare .tag.r{right:14px;background:var(--red)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .steps figure{margin:0}
-.steps img{width:100%;aspect-ratio:3/4;object-fit:cover}
-.steps figcaption{display:flex;gap:10px;align-items:baseline;padding-top:10px;font-size:14px;color:#C9D4EA}
-.steps figcaption b{font-family:var(--display);font-size:26px;color:var(--flag);font-weight:800}
-.work-foot{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+.steps img{width:100%;aspect-ratio:510/400;object-fit:cover;border-radius:12px}
+.steps figcaption{padding-top:10px;font-size:15px;font-weight:700;color:var(--flag)}
+.work-foot{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
 
 /* Testimonials */
 .words{padding:120px 0}
-.words-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:64px}
-.feature{position:relative}
-.feature .mark{font-family:var(--display);font-size:150px;line-height:.6;color:var(--red);height:56px;display:block}
-.feature blockquote{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(32px,3.3vw,46px);line-height:1.04;color:var(--navy)}
-.who{display:flex;gap:14px;align-items:center;margin-top:30px}
-.who img{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--line)}
-.who b{display:block;font-size:17px}
+.feature{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;padding-bottom:60px;border-bottom:1px solid var(--line);margin-bottom:50px}
+.feature .mark{width:84px;height:84px;border-radius:50%;background:var(--red);display:grid;place-items:center}
+.feature .mark svg{width:38px;height:38px;color:#fff}
+.feature blockquote{margin:0;font-stretch:112%;font-weight:700;font-size:clamp(28px,3.3vw,46px);line-height:1.12;letter-spacing:-.015em;color:var(--navy)}
+.who{display:flex;gap:14px;align-items:center;margin-top:26px}
+.who img{width:56px;height:56px;border-radius:50%;border:1px solid var(--line)}
+.who b{display:block;font-size:16.5px}
 .who span{font-size:14px;color:var(--muted)}
-.quotes{display:flex;flex-direction:column}
-.quotes article{padding:26px 0;border-top:1.5px solid var(--line)}
-.quotes article:first-child{border-top:3px solid var(--navy);padding-top:22px}
-.quotes p{font-size:16px;color:#2E384C;margin-bottom:14px}
-.quotes .who{margin-top:0}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
+.quotes p{font-size:16px;color:#33405A;margin-bottom:6px}
+.quotes .who{margin-top:18px}
 .quotes .who img{width:44px;height:44px}
-.words-foot{margin-top:28px}
-.words-foot a{font-weight:700;color:var(--red);text-decoration-thickness:2px;text-underline-offset:5px}
+.words-foot{margin-top:40px}
 
-/* Free estimate band */
-.cta{--edge:var(--red);background:var(--red);color:#fff;padding:96px 0 100px}
-.cta-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:center}
-.cta h2{font-size:clamp(44px,5.4vw,78px);text-transform:uppercase}
-.cta p{color:#FFE3E4;font-size:18px;max-width:52ch;margin:24px 0 0}
-.cta-box{background:#fff;color:var(--ink);padding:32px}
-.cta-box a.big{display:block;font-family:var(--display);font-weight:900;font-size:44px;color:var(--navy);text-decoration:none;line-height:1}
+/* CTA */
+.cta{position:relative;color:#fff;padding:130px 0;overflow:hidden;isolation:isolate}
+.cta>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(178,15,23,.96) 0%,rgba(178,15,23,.88) 45%,rgba(6,27,63,.55) 100%)}
+.cta-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+.cta h2{font-size:clamp(42px,5.4vw,80px);font-stretch:122%}
+.cta p{color:#FFE6E7;font-size:19px;max-width:48ch;margin:24px 0 0}
+.cta-box{background:#fff;color:var(--ink);padding:34px;border-radius:24px}
+.cta-box small{color:var(--muted);font-weight:600;font-size:14px}
+.cta-box a.big{display:block;font-stretch:118%;font-weight:900;font-size:40px;color:var(--navy);text-decoration:none;line-height:1.05;margin:4px 0 6px}
 .cta-box a.big:hover{color:var(--red)}
-.cta-box .mail{display:inline-block;margin:10px 0 24px;font-weight:600;color:var(--azure)}
-.cta-box ul{list-style:none;padding:18px 0 0;margin:0 0 24px;border-top:1.5px solid var(--line);font-size:15px;color:var(--muted)}
+.cta-box .mail{display:inline-block;margin-bottom:20px;font-weight:600;color:var(--azure)}
+.cta-box ul{list-style:none;padding:18px 0 0;margin:0 0 22px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
 .cta-box li{padding:3px 0}
 .cta-box li b{color:var(--ink)}
+.cta-box .btn{width:100%}
 
 /* Footer */
-.foot{--edge:var(--navy-ink);background:var(--navy-ink);color:#B9C5DD;padding:90px 0 0;font-size:15.5px}
+.foot{--edge:var(--deep);background:var(--deep);color:#B6C3DC;padding:90px 0 0;font-size:15.5px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:48px}
-.foot-logo{width:250px;margin-bottom:22px}
-.foot .motto{font-family:var(--display);font-size:26px;line-height:1.1;color:#fff;font-weight:700;max-width:18ch}
-.foot h4{font:700 17px/1 var(--body);color:#fff;margin:6px 0 20px}
+.foot-logo{width:240px;margin-bottom:22px}
+.foot .motto{font-stretch:112%;font-size:22px;line-height:1.25;color:#fff;font-weight:700;max-width:22ch}
+.foot h4{font:700 16px/1 var(--f);color:#fff;margin:6px 0 20px}
 .foot ul{list-style:none;padding:0;margin:0}
 .foot li{padding:5px 0}
-.foot a{text-decoration:none;color:#DCE4F3}
+.foot a{text-decoration:none;color:#DDE5F4}
 .foot a:hover{color:var(--flag)}
-.foot .phone{font-family:var(--display);font-size:32px;font-weight:800;color:#fff}
+.foot .phone{font-stretch:118%;font-size:28px;font-weight:800;color:#fff}
 .foot-bottom{margin-top:70px;border-top:1px solid rgba(255,255,255,.12);padding:22px 0 26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px}
 .foot-bottom a{color:#fff;font-weight:600}
 
-.call-bar{display:none}
+.call-bar,.mnav{display:none}
 
-/* Mobile nav panel */
-.mnav{display:none}
-
-@media (max-width:1100px){
-  .nav,.head-call{display:none}
+@media (max-width:1180px){
+  .nav,.head-tel,.head-cta .btn{display:none}
   .menu-btn{display:grid}
-  .mnav{display:block;position:fixed;inset:0;top:0;background:var(--navy);color:#fff;z-index:60;padding:24px 24px 120px;overflow:auto;transform:translateX(100%);transition:transform .25s}
+  .mnav{display:block;position:fixed;inset:0;background:var(--deep);color:#fff;z-index:60;padding:24px 24px 120px;overflow:auto;transform:translateX(100%);transition:transform .25s}
   .mnav.open{transform:none}
   .mnav-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
-  .mnav-top img{height:48px}
-  .mnav button{background:none;border:2px solid rgba(255,255,255,.5);color:#fff;width:46px;height:46px;font-size:24px;cursor:pointer}
+  .mnav-top img{width:170px}
+  .mnav button{background:none;border:2px solid rgba(255,255,255,.5);color:#fff;width:46px;height:46px;border-radius:50%;font-size:24px;cursor:pointer}
   .mnav a{display:block;color:#fff;text-decoration:none;padding:12px 0;font-size:18px;border-bottom:1px solid rgba(255,255,255,.12)}
-  .mnav .sub{padding-left:18px;font-size:16px;color:#C9D4EA}
-  .mnav .grp{font-family:var(--display);font-size:24px;color:var(--flag);margin-top:20px;font-weight:800}
-  .hero-grid{grid-template-columns:1fr;gap:40px}
-  .hero-photo{max-width:620px}
+  .mnav .sub{padding-left:16px;font-size:16px;color:#C3CEE5}
+  .mnav .grp{font-stretch:115%;font-size:20px;color:var(--flag);margin-top:20px;font-weight:800}
+  .estimate{grid-template-columns:1fr;gap:18px}
   .estimate form{grid-template-columns:1fr 1fr}
-  .estimate .btn{grid-column:1/-1}
-  .clients .wrap{grid-template-columns:1fr;gap:20px}
-  .client-row{grid-template-columns:1fr 1fr}
-  .dir-row{grid-template-columns:180px 1fr;gap:20px 28px}
-  .dir-row img{width:180px;grid-row:span 2}
-  .dir-row ul{grid-column:2}
-  .dir-go{display:none}
-  .about-grid,.work-grid,.words-grid,.cta-grid{grid-template-columns:1fr;gap:56px}
-  .about-photo{max-width:520px}
+  .field{grid-column:span 1}
+  .estimate .btn,.form-note{grid-column:span 2}
+  .sec-head{grid-template-columns:1fr;gap:16px}
+  .about-grid,.work-grid,.cta-grid{grid-template-columns:1fr;gap:56px}
+  .about-photo{max-width:540px}
+  .quotes{grid-template-columns:1fr;gap:30px}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width:720px){
+@media (max-width:760px){
   body{font-size:16px}
-  :root{--merlon:22px}
-  .util-left span:nth-child(n+2){display:none}
-  .util .wrap{justify-content:center;gap:10px 20px}
-  .site-head .wrap{min-height:72px}
-  .brand img{height:48px}
-  .hero{padding-top:48px}
-  .hero-lede{font-size:18px}
-  .titleblock{grid-template-columns:1fr 1fr}
-  .titleblock div:nth-child(2){border-right:0}
-  .titleblock div:nth-child(-n+2){border-bottom:1.5px solid rgba(227,225,92,.7)}
-  .estimate{padding:24px 20px;margin-inline:-6px}
+  :root{--merlon:20px}
+  .wrap{width:calc(100% - 36px)}
+  .brand,.brand img{width:160px}
+  .site-head .wrap{min-height:76px}
+  .hero .wrap{padding:120px 0 150px}
+  .hero-bg{width:100%;object-position:55% 50%}
+  .hero::after{background:linear-gradient(0deg,rgba(6,27,63,.96) 0%,rgba(6,27,63,.8) 55%,rgba(6,27,63,.6) 100%)}
+  .hero-lede{font-size:17px}
+  .hero-ctas .btn{flex:1 1 100%}
+  .estimate{padding:24px 20px}
   .estimate form{grid-template-columns:1fr}
-  .client-row{grid-template-columns:1fr}
-  .sec-head{grid-template-columns:1fr;gap:20px;margin-bottom:36px}
+  .field,.estimate .btn,.form-note{grid-column:span 1}
+  .facts div{padding:0 14px}
+  .facts b{font-size:15px}
+  .client-row{gap:18px 28px}
   .services,.about,.words{padding:80px 0}
   .work{padding:80px 0}
-  .dir-row{grid-template-columns:1fr;gap:16px}
-  .dir-row img{width:100%;grid-row:auto}
-  .dir-row ul{grid-column:auto}
-  .dir-row h3{font-size:38px}
-  .since{right:12px;bottom:12px}
-  .since b{font-size:56px}
-  .founder blockquote{font-size:25px}
+  .svc-grid{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:340px}
+  .svc.big,.svc.wide{grid-row:auto;grid-column:auto;flex-direction:column;align-items:stretch;padding:26px}
+  .svc{padding:26px}
+  .since{right:12px;bottom:12px;padding:16px 20px}
+  .since b{font-size:50px}
+  .feature{grid-template-columns:1fr;gap:20px}
+  .feature .mark{width:60px;height:60px}
   .steps{gap:6px}
+  .compare{aspect-ratio:1000/420}
+  .steps img{aspect-ratio:3/4}
+  .cta{padding:90px 0}
   .foot-grid{grid-template-columns:1fr}
-  .call-bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:50;padding-bottom:env(safe-area-inset-bottom,0px);background:var(--navy-ink)}
+  .call-bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:55;padding-bottom:env(safe-area-inset-bottom,0px);background:var(--deep)}
   .call-bar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px;font-weight:700;color:#fff;text-decoration:none}
   .call-bar a:first-child{background:var(--red)}
   .call-bar svg{width:18px;height:18px}
   .foot{padding-bottom:58px}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.hero h1 .ln>span,.hero-bg{transform:none}}
 </style>
 </head>
 <body>
 
-<div class="util">
+<header class="site-head" id="head">
   <div class="wrap">
-    <div class="util-left">
-      <span><b>Office hours</b> 9:00am to 2:00pm</span>
-      <span>22963 112 Ave NW, Edmonton, AB T5S 2M4</span>
-    </div>
-    <div class="util-left">
-      <a href="mailto:jdcustodial@gmail.com">jdcustodial@gmail.com</a>
-      <a href="tel:+17804847185">(780) 484-7185</a>
-    </div>
-  </div>
-</div>
-
-<header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="https://jandan.ca/" aria-label="Jan-Dan Custodial Services Inc. home"><img src="images/logo.jpg" alt="Jan-Dan Custodial Services Inc. Construction and Maintenance" width="720" height="244"></a>
+    <a class="brand" href="https://jandan.ca/" aria-label="Jan-Dan Custodial Services Inc. home">
+      <img class="light" src="images/logo-white.png" alt="Jan-Dan Custodial Services Inc. Construction and Maintenance" width="720" height="244">
+      <img class="dark" src="images/logo.jpg" alt="" width="720" height="244">
+    </a>
     <ul class="nav">
-      <li><a href="https://jandan.ca/" aria-current="page">Home</a></li>
+      <li><a href="https://jandan.ca/">Home</a></li>
       <li><button type="button" aria-haspopup="true">About us <svg class="caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/></svg></button>
         <ul class="drop">
           <li><a href="https://jandan.ca/about-us/">About us</a></li>
@@ -329,8 +325,11 @@ p{margin:0 0 1em}
       <li><a href="https://jandan.ca/faq/">FAQ</a></li>
       <li><a href="https://jandan.ca/contact-us/">Contact us</a></li>
     </ul>
-    <a class="head-call" href="tel:+17804847185"><small>Call for a free estimate</small><strong>(780) 484-7185</strong></a>
-    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <div class="head-cta">
+      <a class="head-tel" href="tel:+17804847185">(780) 484-7185</a>
+      <a class="btn btn-red" href="#estimate">Free estimate</a>
+    </div>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
   </div>
 </header>
 
@@ -355,35 +354,31 @@ p{margin:0 0 1em}
 
 <main>
 <section class="hero">
+  <img class="hero-bg" src="images/hero.jpg" alt="Jan-Dan cleaner running a floor scrubber across a large Edmonton building lobby" width="1200" height="756">
   <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-kicker"><i></i>Jan-Dan Custodial Services Inc., Edmonton</div>
-        <h1><span>Best cleaning</span><span>service</span><span>in town</span></h1>
-        <p class="hero-lede">We provide specialists in industrial and commercial cleaning, from daily janitorial work to the final clean on major construction projects.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-red" href="https://jandan.ca/contact-us/">Get appointment</a>
-          <a class="btn btn-line" href="tel:+17804847185"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>(780) 484-7185</a>
-        </div>
-        <div class="titleblock" role="list">
-          <div role="listitem"><small>Established</small><b>1997</b></div>
-          <div role="listitem"><small>Based in</small><b>Edmonton, AB</b></div>
-          <div role="listitem"><small>Specialists in</small><b>Industrial and commercial</b></div>
-          <div role="listitem"><small>Office hours</small><b>9:00am to 2:00pm</b></div>
-        </div>
+    <div class="hero-copy">
+      <div class="hero-tag"><b>Since 1997</b>Commercial cleaning company in Edmonton</div>
+      <h1><span class="ln"><span>Best cleaning</span></span><span class="ln"><span>service</span></span><span class="ln"><span>in town.</span></span></h1>
+      <p class="hero-lede">We provide specialists in industrial and commercial cleaning, from daily janitorial work to the final clean on major construction projects.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-red" href="https://jandan.ca/contact-us/">Get appointment</a>
+        <a class="btn btn-ghost" href="tel:+17804847185"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>(780) 484-7185</a>
       </div>
-      <div class="hero-photo">
-        <figure>
-          <img src="images/hero.jpg" alt="Jan-Dan cleaner wiping a commercial window" width="1000" height="750">
-          <figcaption>Construction and maintenance cleaning</figcaption>
-        </figure>
+      <div class="facts">
+        <div><small>Specialists in</small><b>Industrial and commercial</b></div>
+        <div><small>Office hours</small><b>9:00am to 2:00pm</b></div>
+        <div><small>Based in</small><b>Edmonton, AB</b></div>
       </div>
     </div>
+  </div>
+</section>
 
+<section class="dock battlement" aria-label="Free estimate">
+  <div class="wrap">
     <div class="estimate" id="estimate">
-      <div class="estimate-head">
+      <div>
         <h2>Get your free estimate</h2>
-        <p>Tell us about your facility. We reply during office hours.</p>
+        <p class="sub">Tell us about your facility. We reply during office hours.</p>
       </div>
       <form id="estimate-form" novalidate>
         <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -403,14 +398,14 @@ p{margin:0 0 1em}
   </div>
 </section>
 
-<section class="clients battlement" aria-label="Clients">
+<section class="clients" aria-label="Clients">
   <div class="wrap">
     <p>Trusted by Edmonton builders, colleges and offices</p>
     <div class="client-row">
-      <div class="client"><img src="images/client-clark.png" alt="" width="71" height="71"><span>Clark Builders</span></div>
-      <div class="client"><img src="images/client-carlson.png" alt="" width="71" height="71"><span>Carlson Construction</span></div>
-      <div class="client"><img src="images/client-dawson.png" alt="" width="71" height="71"><span>Dawson Wallace</span></div>
-      <div class="client"><img src="images/client-pipe-trades.png" alt="" width="71" height="71"><span>Alberta Pipe Trades College</span></div>
+      <div class="client"><img src="images/client-clark.png" alt="" width="71" height="71">Clark Builders</div>
+      <div class="client"><img src="images/client-carlson.png" alt="" width="71" height="71">Carlson Construction</div>
+      <div class="client"><img src="images/client-dawson.png" alt="" width="71" height="71">Dawson Wallace</div>
+      <div class="client"><img src="images/client-pipe-trades.png" alt="" width="71" height="71">Alberta Pipe Trades College</div>
     </div>
   </div>
 </section>
@@ -421,35 +416,35 @@ p{margin:0 0 1em}
       <h2>Complete professional cleaning services</h2>
       <p>From office cleaning and custodial services to restroom sanitation, high dusting, post-construction cleaning and water damage restoration, our team covers every part of your facility.</p>
     </div>
-    <div class="directory">
-      <a class="dir-row" href="https://jandan.ca/commercial-cleaning/">
-        <img src="images/service-commercial.jpg" alt="Cleaner wiping down an office desk and keyboard" width="370" height="290" loading="lazy">
+    <div class="svc-grid">
+      <a class="svc big" href="https://jandan.ca/commercial-cleaning/">
+        <img src="images/service-commercial.jpg" alt="Jan-Dan custodian wiping a boardroom table with a cleaning cart nearby" width="1200" height="756" loading="lazy">
+        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         <h3>Commercial cleaning</h3>
         <ul><li>Office cleaning</li><li>Custodial service</li><li>Restroom sanitation</li><li>Window service</li></ul>
-        <span class="dir-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="dir-row" href="https://jandan.ca/specialized-cleaning/">
-        <img src="images/service-specialized-cleaning.jpg" alt="Floor machine polishing a commercial floor" width="370" height="290" loading="lazy">
+      <a class="svc" href="https://jandan.ca/specialized-cleaning/">
+        <img src="images/service-specialized-cleaning.jpg" alt="Floor machine stripping a tile floor in a school hallway" width="1200" height="756" loading="lazy">
+        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         <h3>Specialized cleaning</h3>
         <ul><li>High dusting</li><li>Partition cleaning</li><li>Carpet and floor care</li><li>Floor stripping and refinishing</li></ul>
-        <span class="dir-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="dir-row" href="https://jandan.ca/specialized-services/">
-        <img src="images/service-specialized-services.jpg" alt="Steam carpet cleaning in progress" width="370" height="290" loading="lazy">
+      <a class="svc" href="https://jandan.ca/specialized-services/">
+        <img src="images/service-specialized-services.jpg" alt="Crew doing a post-construction clean in a new commercial interior" width="1200" height="756" loading="lazy">
+        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         <h3>Specialized services</h3>
         <ul><li>Pressure washing</li><li>Post-construction cleaning</li><li>Steam carpet cleaning</li></ul>
-        <span class="dir-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="dir-row" href="https://jandan.ca/emergency-and-maintenance/">
-        <img src="images/service-emergency-maintenance.jpg" alt="Cleaner restoring a surface during maintenance" width="370" height="290" loading="lazy">
-        <h3>Emergency and maintenance</h3>
-        <ul><li>Water damage and restoration</li><li>Maintenance and repairs</li></ul>
-        <span class="dir-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <a class="svc wide" href="https://jandan.ca/emergency-and-maintenance/">
+        <img src="images/service-emergency-maintenance.jpg" alt="Technician setting up air movers on a water-damaged office carpet" width="1200" height="756" loading="lazy">
+        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div><h3>Emergency and maintenance</h3>
+        <ul><li>Water damage and restoration</li><li>Maintenance and repairs</li></ul></div>
       </a>
     </div>
-    <div class="services-foot">
+    <div class="svc-foot">
       <p>Need any help for cleaning? <a href="https://jandan.ca/all-services/">See all services</a></p>
-      <a class="tel" href="tel:+17804847185">(780) 484-7185</a>
+      <a class="btn btn-line" href="tel:+17804847185">Call (780) 484-7185</a>
     </div>
   </div>
 </section>
@@ -457,7 +452,8 @@ p{margin:0 0 1em}
 <section class="about" id="about">
   <div class="wrap about-grid">
     <div class="about-photo">
-      <img src="images/about.jpg" alt="Jan-Dan cleaner ready for work" width="411" height="528" loading="lazy">
+      <img src="images/about.jpg" alt="Smiling Jan-Dan custodian standing beside his cleaning cart" width="896" height="1056" loading="lazy">
+      <div class="crest-tag"><img src="images/logo.jpg" alt="" width="720" height="244" loading="lazy"></div>
       <div class="since"><small>Since</small><b>1997</b><span>Serving Edmonton facilities</span></div>
     </div>
     <div>
@@ -465,13 +461,13 @@ p{margin:0 0 1em}
       <p class="lead">Our commitment to excellence in cleaning is at the core of everything we do at Jan-Dan.</p>
       <p>Our mission revolves around enhancing the cleanliness and hygiene of commercial spaces, ensuring a pristine environment for businesses and their clients. Our focus is solely on creating immaculate and inviting commercial spaces, setting the standard for cleanliness and professionalism in the industry.</p>
       <div class="founder">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.6 6C6.5 7.3 4.5 10 4.5 13.6V18h6v-6H7.4c.2-2 1.4-3.5 3.2-4.4L9.6 6zm9 0c-3.1 1.3-5.1 4-5.1 7.6V18h6v-6h-3.1c.2-2 1.4-3.5 3.2-4.4L18.6 6z"/></svg>
-        <div>
-          <blockquote>Every day holds the same significance to us as our inaugural day on the jobsite.</blockquote>
-          <cite>Janusz Kalich, Founder</cite>
-        </div>
+        <blockquote>&ldquo;Every day holds the same significance to us as our inaugural day on the jobsite.&rdquo;</blockquote>
+        <cite>Janusz Kalich, Founder</cite>
       </div>
-      <a class="btn btn-navy" href="https://jandan.ca/about-us/">More about us</a>
+      <div class="about-ctas">
+        <a class="btn btn-navy" href="https://jandan.ca/about-us/">More about us</a>
+        <a class="btn btn-line" href="https://jandan.ca/contact-us/">Contact us</a>
+      </div>
     </div>
   </div>
 </section>
@@ -483,7 +479,7 @@ p{margin:0 0 1em}
       <p>Real results from Jan-Dan crews: post-construction cleaning and floor renewal on Edmonton projects.</p>
     </div>
     <div class="work-grid">
-      <div>
+      <div class="panel">
         <div class="panel-label"><h3>Post-construction cleaning</h3><span>Drag to compare</span></div>
         <div class="compare" id="compare">
           <img src="images/tub-after.jpg" alt="Bathtub after Jan-Dan post-construction cleaning" loading="lazy">
@@ -494,28 +490,30 @@ p{margin:0 0 1em}
           <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
         </div>
       </div>
-      <div>
+      <div class="panel">
         <div class="panel-label"><h3>Floor renewal</h3><span>Stripping and refinishing</span></div>
         <div class="steps">
-          <figure><img src="images/floor-step-1.jpg" alt="Floor being stripped" loading="lazy"><figcaption><b>Step 1</b></figcaption></figure>
-          <figure><img src="images/floor-step-2.jpg" alt="Floor during the renewal process" loading="lazy"><figcaption><b>Step 2</b></figcaption></figure>
-          <figure><img src="images/floor-step-3.jpg" alt="Renewed glossy floor in a staff kitchen" loading="lazy"><figcaption><b>Step 3</b></figcaption></figure>
+          <figure><img src="images/floor-step-1.jpg" alt="Floor being stripped" loading="lazy"><figcaption>Step 1</figcaption></figure>
+          <figure><img src="images/floor-step-2.jpg" alt="Floor during the renewal process" loading="lazy"><figcaption>Step 2</figcaption></figure>
+          <figure><img src="images/floor-step-3.jpg" alt="Renewed glossy floor in a staff kitchen" loading="lazy"><figcaption>Step 3</figcaption></figure>
         </div>
       </div>
     </div>
     <div class="work-foot">
       <a class="btn btn-red" href="https://jandan.ca/photos/">See more photos</a>
-      <a class="btn btn-line" href="mailto:jdcustodial@gmail.com">Want to renew your floor? Email us</a>
+      <a class="btn btn-ghost" href="mailto:jdcustodial@gmail.com">Want to renew your floor? Email us</a>
     </div>
   </div>
 </section>
 
 <section class="words" id="testimonials">
-  <div class="wrap words-grid">
+  <div class="wrap">
     <div class="feature">
-      <span class="mark" aria-hidden="true">&ldquo;</span>
-      <blockquote>On the NAIT CAT project, a 550,000 SF public education building, Jan-Dan did a great job of providing the final cleaning services quickly and to a high quality.</blockquote>
-      <div class="who"><img src="images/client-clark.png" alt="" width="71" height="71"><div><b>Clark Builders</b><span>NAIT CAT project, Edmonton</span></div></div>
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.6 6C6.5 7.3 4.5 10 4.5 13.6V18h6v-6H7.4c.2-2 1.4-3.5 3.2-4.4L9.6 6zm9 0c-3.1 1.3-5.1 4-5.1 7.6V18h6v-6h-3.1c.2-2 1.4-3.5 3.2-4.4L18.6 6z"/></svg></span>
+      <div>
+        <blockquote>On the NAIT CAT project, a 550,000 SF public education building on the NAIT campus, Jan-Dan did a great job of providing the final cleaning services quickly and to a high quality.</blockquote>
+        <div class="who"><img src="images/client-clark.png" alt="" width="71" height="71"><div><b>Clark Builders</b><span>NAIT CAT project, Edmonton</span></div></div>
+      </div>
     </div>
     <div class="quotes">
       <article>
@@ -530,18 +528,20 @@ p{margin:0 0 1em}
         <p>We have been using Jan-Dan to clean our office building for the past 12 years and have always been completely satisfied. I am happy to recommend the services of Jan-Dan Custodial Services.</p>
         <div class="who"><img src="images/client-pipe-trades.png" alt="" width="71" height="71"><div><b>Alberta Pipe Trades College</b></div></div>
       </article>
-      <div class="words-foot"><a href="https://jandan.ca/testimonials/">Read all testimonials</a></div>
     </div>
+    <div class="words-foot"><a class="btn btn-line" href="https://jandan.ca/testimonials/">Read all testimonials</a></div>
   </div>
 </section>
 
-<section class="cta battlement" id="contact">
+<section class="cta" id="contact">
+  <img src="images/service-specialized-services.jpg" alt="" width="1200" height="756" loading="lazy">
   <div class="wrap cta-grid">
     <div>
       <h2>Free cleaning estimates. So why wait?</h2>
       <p>Take advantage of our complimentary cleaning estimates and discover the quality of our services. Let us transform your environment into a pristine space, without any cost or obligation.</p>
     </div>
     <div class="cta-box">
+      <small>Need any help for cleaning?</small>
       <a class="big" href="tel:+17804847185">(780) 484-7185</a>
       <a class="mail" href="mailto:jdcustodial@gmail.com">jdcustodial@gmail.com</a>
       <ul>
@@ -604,20 +604,24 @@ p{margin:0 0 1em}
 
 <script>
 (function(){
+  var head=document.getElementById('head');
+  function onScroll(){head.classList.toggle('solid',window.scrollY>40)}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
   var btn=document.querySelector('.menu-btn'),nav=document.getElementById('mnav'),close=document.querySelector('.mnav-close');
-  function set(o){nav.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+  function set(o){nav.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''}
   btn.addEventListener('click',function(){set(true)});
   close.addEventListener('click',function(){set(false)});
   nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false)})});
 
   var cmp=document.getElementById('compare');
-  if(cmp){var r=cmp.querySelector('input');r.addEventListener('input',function(){cmp.style.setProperty('--pos',r.value+'%')});}
+  if(cmp){var r=cmp.querySelector('input');r.addEventListener('input',function(){cmp.style.setProperty('--pos',r.value+'%')})}
 
   var f=document.getElementById('estimate-form');
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var note=f.querySelector('.form-note'),bad=[].filter.call(f.querySelectorAll('[required]'),function(x){return !x.value.trim()||(x.type==='email'&&!/^\S+@\S+\.\S+$/.test(x.value))});
-    if(bad.length){note.textContent='Add your name, a valid email and the service you need, then submit again.';bad[0].focus();return;}
+    if(bad.length){note.textContent='Add your name, a valid email and the service you need, then submit again.';bad[0].focus();return}
     var b='Name: '+f.name.value+'%0D%0AEmail: '+f.email.value+'%0D%0APhone: '+f.phone.value+'%0D%0AService: '+f.service.value;
     window.location.href='mailto:jdcustodial@gmail.com?subject=Free estimate request&body='+b;
     note.textContent='Opening your email app to send the request to jdcustodial@gmail.com.';
